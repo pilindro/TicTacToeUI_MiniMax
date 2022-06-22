@@ -64,19 +64,21 @@ app_.place(x=25, y=150)
 
 jogador_1 = 'X'
 jogador_2 = 'O'
-jogando = 'X'
+jogador_atual = 'X'
 
 
+# tabuleiro que a interface manipula -------------------------
+tabuleiro = [[1,2,3],[4,5,6],[7,8,9]]
 
-tabela = [[1,2,3],[4,5,6],[7,8,9]]
-board = [['','',''],['','',''],['','','']]
+# tabuleiro que o algoritmo MinMax manipula pra testar as jogadas 
+tabuleiro_minimax = [['','',''],['','',''],['','','']]
 
 
 def jogano(i):
-    global jogando
-    if jogando == 'X':
+    global jogador_atual
+    if jogador_atual == 'X':
             cor = co7
-    if jogando == 'O':
+    if jogador_atual == 'O':
         cor = co4
     # if jogando == 'O':
     #     robo()
@@ -85,179 +87,179 @@ def jogano(i):
     if i == str(1):
         
         if b_0['text'] == '':
-            if jogando == 'X':
+            if jogador_atual == 'X':
                 b_0['fg'] = cor
                 b_0['text'] = 'X'
-                tabela[0][0] = jogando
-                jogando = 'O'
-                print(tabela)
-            elif jogando == 'O':
+                tabuleiro[0][0] = jogador_atual
+                jogador_atual = 'O'
+                print(tabuleiro)
+            elif jogador_atual == 'O':
                 b_0['fg'] = cor
                 b_0['text'] = 'O'
-                tabela[0][0] = jogando
-                jogando = 'X'
-                print(tabela)
+                tabuleiro[0][0] = jogador_atual
+                jogador_atual = 'X'
+                print(tabuleiro)
     if i == str(2):
 
         if b_1['text'] == '':
-            if jogando == 'X':
+            if jogador_atual == 'X':
                 b_1['fg'] = cor
                 b_1['text'] = 'X'
-                tabela[0][1] = jogando
-                jogando = 'O'
-                print(tabela)
-            elif jogando == 'O':
+                tabuleiro[0][1] = jogador_atual
+                jogador_atual = 'O'
+                print(tabuleiro)
+            elif jogador_atual == 'O':
                 b_1['fg'] = cor
                 b_1['text'] = 'O'   
-                tabela[0][1] = jogando
-                jogando = 'X'  
-                print(tabela)  
+                tabuleiro[0][1] = jogador_atual
+                jogador_atual = 'X'  
+                print(tabuleiro)  
            
     if i == str(3):
 
         if b_2['text'] == '':
-            if jogando == 'X':
+            if jogador_atual == 'X':
                 b_2['fg'] = cor
                 b_2['text'] = 'X'
-                tabela[0][2] = jogando  
-                jogando = 'O'
-                print(tabela)
-            elif jogando == 'O':
+                tabuleiro[0][2] = jogador_atual  
+                jogador_atual = 'O'
+                print(tabuleiro)
+            elif jogador_atual == 'O':
                 b_2['fg'] = cor
                 b_2['text'] = 'O' 
-                tabela[0][2] = jogando     
-                jogando = 'X'
-                print(tabela) 
+                tabuleiro[0][2] = jogador_atual     
+                jogador_atual = 'X'
+                print(tabuleiro) 
             
     if i == str(4):
 
         if b_3['text'] == '':
-            if jogando == 'X':
+            if jogador_atual == 'X':
                 b_3['fg'] = cor
                 b_3['text'] = 'X'
-                tabela[1][0] = jogando  
-                jogando = 'O'
-            elif jogando == 'O':
+                tabuleiro[1][0] = jogador_atual  
+                jogador_atual = 'O'
+            elif jogador_atual == 'O':
                 b_3['fg'] = cor
                 b_3['text'] = 'O' 
-                tabela[1][0] = jogando  
-                jogando = 'X'
+                tabuleiro[1][0] = jogador_atual  
+                jogador_atual = 'X'
 
     if i == str(5):
 
         if b_4['text'] == '':
-            if jogando == 'X':
+            if jogador_atual == 'X':
                 b_4['fg'] = cor
                 b_4['text'] = 'X'
-                tabela[1][1] = jogando  
-                jogando = 'O'
-            elif jogando == 'O':
+                tabuleiro[1][1] = jogador_atual  
+                jogador_atual = 'O'
+            elif jogador_atual == 'O':
                 b_4['fg'] = cor
                 b_4['text'] = 'O' 
-                tabela[1][1] = jogando
-                jogando = 'X'
+                tabuleiro[1][1] = jogador_atual
+                jogador_atual = 'X'
 
     if i == str(6):
 
         if b_5['text'] == '':
-            if jogando == 'X':
+            if jogador_atual == 'X':
                 b_5['fg'] = cor
                 b_5['text'] = 'X'
-                tabela[1][2] = jogando  
-                jogando = 'O'
-            elif jogando == 'O':
+                tabuleiro[1][2] = jogador_atual  
+                jogador_atual = 'O'
+            elif jogador_atual == 'O':
                 b_5['fg'] = cor
                 b_5['text'] = 'O' 
-                tabela[1][2] = jogando
-                jogando = 'X'
+                tabuleiro[1][2] = jogador_atual
+                jogador_atual = 'X'
 
     if i == str(7):
 
         if b_6['text'] == '':
-            if jogando == 'X':
+            if jogador_atual == 'X':
                 b_6['fg'] = cor
                 b_6['text'] = 'X'
-                tabela[2][0] = jogando  
-                jogando = 'O'
-            elif jogando == 'O':
+                tabuleiro[2][0] = jogador_atual  
+                jogador_atual = 'O'
+            elif jogador_atual == 'O':
                 b_6['fg'] = cor
                 b_6['text'] = 'O' 
-                tabela[2][0] = jogando
-                jogando = 'X'
+                tabuleiro[2][0] = jogador_atual
+                jogador_atual = 'X'
 
     if i == str(8):
 
         if b_7['text'] == '':
-            if jogando == 'X':
+            if jogador_atual == 'X':
                 b_7['fg'] = cor
                 b_7['text'] = 'X'
-                tabela[2][1] = jogando  
-                jogando = 'O'
-            elif jogando == 'O':
+                tabuleiro[2][1] = jogador_atual  
+                jogador_atual = 'O'
+            elif jogador_atual == 'O':
                 b_7['fg'] = cor
                 b_7['text'] = 'O' 
-                tabela[2][1] = jogando
-                jogando = 'X'
+                tabuleiro[2][1] = jogador_atual
+                jogador_atual = 'X'
 
     if i == str(9):
 
         if b_8['text'] == '':
-            if jogando == 'X':
+            if jogador_atual == 'X':
                 b_8['fg'] = cor
                 b_8['text'] = 'X'
-                tabela[2][2] = jogando  
-                jogando = 'O'
-            elif jogando == 'O':
+                tabuleiro[2][2] = jogador_atual  
+                jogador_atual = 'O'
+            elif jogador_atual == 'O':
                 b_8['fg'] = cor
                 b_8['text'] = 'O' 
-                tabela[2][2] = jogando
-                jogando = 'X'
+                tabuleiro[2][2] = jogador_atual
+                jogador_atual = 'X'
     
     # acabar jogo na horizontal
-    if tabela[0][0] == tabela[0][1] == tabela[0][2] != '':
-        if tabela[0][0] == 'X':
+    if tabuleiro[0][0] == tabuleiro[0][1] == tabuleiro[0][2] != '':
+        if tabuleiro[0][0] == 'X':
             vencedor(jogador_1)
-        if tabela[0][0] == 'O':
+        if tabuleiro[0][0] == 'O':
             vencedor(jogador_2)
             
-    if tabela[1][0] == tabela[1][1] == tabela[1][2] != '':
-        if tabela[1][0] == 'X':
+    if tabuleiro[1][0] == tabuleiro[1][1] == tabuleiro[1][2] != '':
+        if tabuleiro[1][0] == 'X':
             vencedor(jogador_1)
-        if tabela[1][0] == 'O':
+        if tabuleiro[1][0] == 'O':
             vencedor(jogador_2)
-    if tabela[2][0] == tabela[2][1] == tabela[2][2] != '':
-        if tabela[2][0] == 'X':
+    if tabuleiro[2][0] == tabuleiro[2][1] == tabuleiro[2][2] != '':
+        if tabuleiro[2][0] == 'X':
             vencedor(jogador_1)
-        if tabela[2][0] == 'O':
+        if tabuleiro[2][0] == 'O':
             vencedor(jogador_2)
 
     #acabar jogo na vertical
-    if tabela[0][0] == tabela[1][0] == tabela[2][0] != '':
-        if tabela[0][0] == 'X':
+    if tabuleiro[0][0] == tabuleiro[1][0] == tabuleiro[2][0] != '':
+        if tabuleiro[0][0] == 'X':
             vencedor(jogador_1)
-        if tabela[0][0] == 'O':
+        if tabuleiro[0][0] == 'O':
             vencedor(jogador_2)
-    if tabela[0][1] == tabela[1][1] == tabela[2][1] != '':
-        if tabela[0][1] == 'X':
+    if tabuleiro[0][1] == tabuleiro[1][1] == tabuleiro[2][1] != '':
+        if tabuleiro[0][1] == 'X':
             vencedor(jogador_1)
-        if tabela[0][1] == 'O':
+        if tabuleiro[0][1] == 'O':
             vencedor(jogador_2)
-    if tabela[0][2] == tabela[1][2] == tabela[2][2] != '':
-        if tabela[0][2] == 'X':
+    if tabuleiro[0][2] == tabuleiro[1][2] == tabuleiro[2][2] != '':
+        if tabuleiro[0][2] == 'X':
             vencedor(jogador_1)
-        if tabela[0][2] == 'O':
+        if tabuleiro[0][2] == 'O':
             vencedor(jogador_2)
 
     #acabar o jogo na diagonal
-    if tabela[0][0] == tabela[1][1] == tabela[2][2] != '':
-        if tabela[0][0] == 'X':
+    if tabuleiro[0][0] == tabuleiro[1][1] == tabuleiro[2][2] != '':
+        if tabuleiro[0][0] == 'X':
             vencedor(jogador_1)
-        if tabela[0][0] == 'O':
+        if tabuleiro[0][0] == 'O':
             vencedor(jogador_2)
-    if tabela[0][2] == tabela[1][1] == tabela[2][0] != '':
-        if tabela[0][2] == 'X':
+    if tabuleiro[0][2] == tabuleiro[1][1] == tabuleiro[2][0] != '':
+        if tabuleiro[0][2] == 'X':
             vencedor(jogador_1)
-        if tabela[0][2] == 'O':
+        if tabuleiro[0][2] == 'O':
             vencedor(jogador_2) 
 
 def vencedor(v):
@@ -288,12 +290,12 @@ def vencedor(v):
         b_8['state'] = 'disable'
 
 def restart():
-    global tabela
-    global board
-    global jogando
-    jogando = 'X'
-    tabela = [[1,2,3],[4,5,6],[7,8,9]]
-    board = [['','',''],['','',''],['','','']]
+    global tabuleiro
+    global tabuleiro_minimax
+    global jogador_atual
+    jogador_atual = 'X'
+    tabuleiro = [[1,2,3],[4,5,6],[7,8,9]]
+    tabuleiro_minimax = [['','',''],['','',''],['','','']]
     label_O['fg'] = co8
     label_X['fg'] = co8
     b_0['text'] = ''
@@ -317,19 +319,19 @@ def restart():
 
 def bot_move():
     
-    for i,linha in enumerate(tabela):
+    for i,linha in enumerate(tabuleiro):
         for j, valor in enumerate(linha):
             if valor == 'X' or valor == 'O':
 
-                board[i][j] = valor
+                tabuleiro_minimax[i][j] = valor
     best_score = -80
     best_move = 0
-    for i, linha in enumerate(board):
+    for i, linha in enumerate(tabuleiro_minimax):
         for j, valor in enumerate(linha):
             if valor == '':
-                board[i][j] = jogador_1
-                score = minimax(board, False)
-                board[i][j] = ''
+                tabuleiro_minimax[i][j] = jogador_1
+                score = minimax(tabuleiro_minimax, False)
+                tabuleiro_minimax[i][j] = ''
                 if score > best_score:
                     best_score = score
                     best_move = (i, j)
@@ -374,9 +376,9 @@ def minimax(bo, ismax):
         for i, linha in enumerate(bo):
             for j, valor in enumerate(linha):
                 if valor == '':
-                    board[i][j] = jogador_1
+                    tabuleiro_minimax[i][j] = jogador_1
                     score = minimax(bo, False)
-                    board[i][j] = ''
+                    tabuleiro_minimax[i][j] = ''
                     if score > best_score:
                         best_score = score
         return best_score
@@ -386,15 +388,15 @@ def minimax(bo, ismax):
         for i, linha in enumerate(bo):
             for j, valor in enumerate(linha):
                 if valor == '':
-                    board[i][j] = jogador_2
+                    tabuleiro_minimax[i][j] = jogador_2
                     score = minimax(bo, True)
-                    board[i][j] = ''
+                    tabuleiro_minimax[i][j] = ''
                     if score < best_score:
                         best_score = score
         return best_score
     
 def checar_empate():
-    for i,linha in enumerate(board):
+    for i,linha in enumerate(tabuleiro_minimax):
         for j, valor in enumerate(linha):
             if valor == '':
                 return False
@@ -403,23 +405,23 @@ def checar_empate():
 
 def marcar_vencedor(mark):
         #horizontal
-        if board[0][0] == board[0][1] and board[0][0] == board[0][2] and board[0][0] == mark:
+        if tabuleiro_minimax[0][0] == tabuleiro_minimax[0][1] and tabuleiro_minimax[0][0] == tabuleiro_minimax[0][2] and tabuleiro_minimax[0][0] == mark:
             return True
-        elif (board[1][0] == board[1][1] and board[1][0] == board[1][2] and board[1][0] == mark):
+        elif (tabuleiro_minimax[1][0] == tabuleiro_minimax[1][1] and tabuleiro_minimax[1][0] == tabuleiro_minimax[1][2] and tabuleiro_minimax[1][0] == mark):
             return True
-        elif (board[2][0] == board[2][1] and board[2][0] == board[2][2] and board[2][0] == mark):
+        elif (tabuleiro_minimax[2][0] == tabuleiro_minimax[2][1] and tabuleiro_minimax[2][0] == tabuleiro_minimax[2][2] and tabuleiro_minimax[2][0] == mark):
             return True
         #vertical
-        elif (board[0][0] == board[1][0] and board[0][0] == board[2][0] and board[0][0] == mark):
+        elif (tabuleiro_minimax[0][0] == tabuleiro_minimax[1][0] and tabuleiro_minimax[0][0] == tabuleiro_minimax[2][0] and tabuleiro_minimax[0][0] == mark):
             return True
-        elif (board[0][1] == board[1][1] and board[0][1] == board[2][1] and board[0][1] == mark):
+        elif (tabuleiro_minimax[0][1] == tabuleiro_minimax[1][1] and tabuleiro_minimax[0][1] == tabuleiro_minimax[2][1] and tabuleiro_minimax[0][1] == mark):
             return True
-        elif (board[0][2] == board[1][2] and board[0][2] == board[2][2] and board[0][2] == mark):
+        elif (tabuleiro_minimax[0][2] == tabuleiro_minimax[1][2] and tabuleiro_minimax[0][2] == tabuleiro_minimax[2][2] and tabuleiro_minimax[0][2] == mark):
             return True
         #diagonal
-        elif (board[0][0] == board[1][1] and board[0][0] == board[2][2] and board[0][0] == mark):
+        elif (tabuleiro_minimax[0][0] == tabuleiro_minimax[1][1] and tabuleiro_minimax[0][0] == tabuleiro_minimax[2][2] and tabuleiro_minimax[0][0] == mark):
             return True
-        elif (board[0][2] == board[1][1] and board[0][2] == board[2][0] and board[0][2] == mark):
+        elif (tabuleiro_minimax[0][2] == tabuleiro_minimax[1][1] and tabuleiro_minimax[0][2] == tabuleiro_minimax[2][0] and tabuleiro_minimax[0][2] == mark):
             return True
         else:
             return False
