@@ -1,23 +1,17 @@
 
 from tkinter import *
-from tkinter import ttk
-import random
-
-from numpy import size
-
 # cores ---------------------------------------
 
-co0 = "#FFFFFF"  # branca / white
-co1 = "#333333"  # preta pesado / dark black
-co2 = "#fcc058"  # laranja / orange
-co3 = "#38576b"  # valor / value
-co4 = "#3297a8"   # azul / blue
-co5 = "#fff873"   # amarela / yellow
-co6 = "#fcc058"  # laranja / orange
-co7 = "#e85151"   # vermelha / red
-co8 = '#676a6e'  
-co10 ="#fcfbf7"
-fundo = "#3b3b3b" # preta / black
+co0 = "#FFFFFF"  # branca 
+co1 = "#333333"  # preta pesado 
+co2 = "#fcc058"  # laranja 
+co3 = "#38576b"  # valor 
+co4 = "#3297a8"   # azul 
+co5 = "#fff873"   # amarela 
+co6 = "#fcc058"  # laranja 
+co7 = "#e85151"   # vermelha 
+co8 = '#676a6e'  # Cinza
+fundo = "#3b3b3b" # preto
 
 # janela ----------------------------------------
 
@@ -61,7 +55,7 @@ app_.place(x=25, y=80)
 app_ = Label(frame, text='', width=190, relief='flat', padx=2, pady=1, anchor='center', font=('Ivy 1 bold'), bg=co0, fg=co7 )
 app_.place(x=25, y=150)
 
-
+# parametros para as regras
 jogador_1 = 'X'
 jogador_2 = 'O'
 jogador_atual = 'X'
@@ -70,19 +64,17 @@ jogador_atual = 'X'
 # tabuleiro que a interface manipula -------------------------
 tabuleiro = [[1,2,3],[4,5,6],[7,8,9]]
 
-# tabuleiro que o algoritmo MinMax manipula pra testar as jogadas 
+# tabuleiro que o algoritmo MiniMax manipula pra testar as jogadas 
 tabuleiro_minimax = [['','',''],['','',''],['','','']]
 
-
-def jogano(i):
+# função que controla os botões
+def jogada(i):
     global jogador_atual
     if jogador_atual == 'X':
             cor = co7
     if jogador_atual == 'O':
         cor = co4
-    # if jogando == 'O':
-    #     robo()
-    
+
     
     if i == str(1):
         
@@ -262,6 +254,7 @@ def jogano(i):
         if tabuleiro[0][2] == 'O':
             vencedor(jogador_2) 
 
+# checa o vencedor e desabilita os campos
 def vencedor(v):
     
     if v == jogador_1:
@@ -289,6 +282,7 @@ def vencedor(v):
         b_7['state'] = 'disable'
         b_8['state'] = 'disable'
 
+# prepara o tabuleiro para nova partida
 def restart():
     global tabuleiro
     global tabuleiro_minimax
@@ -317,7 +311,8 @@ def restart():
     b_7['state'] = 'normal'
     b_8['state'] = 'normal'
 
-def bot_move():
+# chama o minimax e devolve a melhor jogada
+def movimento_bot():
     
     for i,linha in enumerate(tabuleiro):
         for j, valor in enumerate(linha):
@@ -363,21 +358,25 @@ def bot_move():
         jogada = '9'
         return jogada
 
-def minimax(bo, ismax):
-    if marcar_vencedor(jogador_1):
+# Função recursiva, if ismax vai testar uma posição disponivel 
+# e passar a vez pro jogador dois que seria o ismax=False, que por sua vez testa a posição 
+# e chama o minimax novamente com a ismax
+# até sair um ganhador ou empate
+def minimax(tabuleiro_atual, ismax):
+    if marcar_vencedor_partidas_simuladas(jogador_1):
         return 1
-    elif marcar_vencedor(jogador_2):
+    elif marcar_vencedor_partidas_simuladas(jogador_2):
         return -1
     elif checar_empate():
         return 0
 
     if ismax:
         best_score = -80
-        for i, linha in enumerate(bo):
+        for i, linha in enumerate(tabuleiro_atual):
             for j, valor in enumerate(linha):
                 if valor == '':
                     tabuleiro_minimax[i][j] = jogador_1
-                    score = minimax(bo, False)
+                    score = minimax(tabuleiro_atual, False)
                     tabuleiro_minimax[i][j] = ''
                     if score > best_score:
                         best_score = score
@@ -385,16 +384,17 @@ def minimax(bo, ismax):
 
     else:
         best_score = 80
-        for i, linha in enumerate(bo):
+        for i, linha in enumerate(tabuleiro_atual):
             for j, valor in enumerate(linha):
                 if valor == '':
                     tabuleiro_minimax[i][j] = jogador_2
-                    score = minimax(bo, True)
+                    score = minimax(tabuleiro_atual, True)
                     tabuleiro_minimax[i][j] = ''
                     if score < best_score:
                         best_score = score
         return best_score
     
+# checar se foi empate
 def checar_empate():
     for i,linha in enumerate(tabuleiro_minimax):
         for j, valor in enumerate(linha):
@@ -403,7 +403,8 @@ def checar_empate():
 
     return True
 
-def marcar_vencedor(mark):
+# marca quem ganhou nas partidas simulados do minimax e é a condição de parada da função recursiva
+def marcar_vencedor_partidas_simuladas(mark):
         #horizontal
         if tabuleiro_minimax[0][0] == tabuleiro_minimax[0][1] and tabuleiro_minimax[0][0] == tabuleiro_minimax[0][2] and tabuleiro_minimax[0][0] == mark:
             return True
@@ -428,37 +429,37 @@ def marcar_vencedor(mark):
 
 
 # botões
-b_0 = Button(frame, command= lambda: jogano('1'), text='', width=2,height=1, relief='flat', padx=2, pady=1, anchor='center', font=('Ivy 20 bold'), bg=co1, fg=co7 )
+b_0 = Button(frame, command= lambda: jogada('1'), text='', width=2,height=1, relief='flat', padx=2, pady=1, anchor='center', font=('Ivy 20 bold'), bg=co1, fg=co7 )
 b_0.place(x=35, y=21)
 
-b_1 = Button(frame, command= lambda: jogano('2'),text='', width=2,height=1, relief='flat', padx=2, pady=1, anchor='center', font=('Ivy 20 bold'), bg=co1, fg=co7 )
+b_1 = Button(frame, command= lambda: jogada('2'),text='', width=2,height=1, relief='flat', padx=2, pady=1, anchor='center', font=('Ivy 20 bold'), bg=co1, fg=co7 )
 b_1.place(x=104, y=21)
 
-b_2 = Button(frame, command= lambda: jogano('3'),text='', width=2,height=1, relief='flat', padx=2, pady=1, anchor='center', font=('Ivy 20 bold'), bg=co1, fg=co7 )
+b_2 = Button(frame, command= lambda: jogada('3'),text='', width=2,height=1, relief='flat', padx=2, pady=1, anchor='center', font=('Ivy 20 bold'), bg=co1, fg=co7 )
 b_2.place(x=169, y=21)
 
-b_3 = Button(frame, command= lambda: jogano('4'),text='', width=2,height=1, relief='flat', padx=2, pady=1, anchor='center', font=('Ivy 20 bold'), bg=co1, fg=co7 )
+b_3 = Button(frame, command= lambda: jogada('4'),text='', width=2,height=1, relief='flat', padx=2, pady=1, anchor='center', font=('Ivy 20 bold'), bg=co1, fg=co7 )
 b_3.place(x=35, y=92)
 
-b_4 = Button(frame, command= lambda: jogano('5'),text='', width=2,height=1, relief='flat', padx=2, pady=1, anchor='center', font=('Ivy 20 bold'), bg=co1, fg=co7 )
+b_4 = Button(frame, command= lambda: jogada('5'),text='', width=2,height=1, relief='flat', padx=2, pady=1, anchor='center', font=('Ivy 20 bold'), bg=co1, fg=co7 )
 b_4.place(x=104, y=92)
 
-b_5 = Button(frame, command= lambda: jogano('6'),text='', width=2,height=1, relief='flat', padx=2, pady=1, anchor='center', font=('Ivy 20 bold'), bg=co1, fg=co7 )
+b_5 = Button(frame, command= lambda: jogada('6'),text='', width=2,height=1, relief='flat', padx=2, pady=1, anchor='center', font=('Ivy 20 bold'), bg=co1, fg=co7 )
 b_5.place(x=169, y=92)
 
-b_6 = Button(frame, command= lambda: jogano('7'),text='', width=2,height=1, relief='flat', padx=2, pady=1, anchor='center', font=('Ivy 20 bold'), bg=co1, fg=co7 )
+b_6 = Button(frame, command= lambda: jogada('7'),text='', width=2,height=1, relief='flat', padx=2, pady=1, anchor='center', font=('Ivy 20 bold'), bg=co1, fg=co7 )
 b_6.place(x=35, y=162)
 
-b_7 = Button(frame, command= lambda: jogano('8'),text='', width=2,height=1, relief='flat', padx=2, pady=1, anchor='center', font=('Ivy 20 bold'), bg=co1, fg=co7 )
+b_7 = Button(frame, command= lambda: jogada('8'),text='', width=2,height=1, relief='flat', padx=2, pady=1, anchor='center', font=('Ivy 20 bold'), bg=co1, fg=co7 )
 b_7.place(x=104, y=162)
 
-b_8 = Button(frame, command= lambda: jogano('9'),text='', width=2,height=1, relief='flat', padx=2, pady=1, anchor='center', font=('Ivy 20 bold'), bg=co1, fg=co7 )
+b_8 = Button(frame, command= lambda: jogada('9'),text='', width=2,height=1, relief='flat', padx=2, pady=1, anchor='center', font=('Ivy 20 bold'), bg=co1, fg=co7 )
 b_8.place(x=169, y=162)
 
 b_9 = Button(frame, command= lambda: restart(),text='RESTART', width=7,height=0, relief='flat', padx=2, pady=1, anchor='center', font=('Ivy 15 bold'), bg=co1, fg=co5 )
 b_9.place(x=7, y=215)
 
-b_10 = Button(frame, command= lambda: jogano(bot_move()),text='BOT', width=7,height=0, relief='flat', padx=1, pady=1, anchor='center', font=('Ivy 15 bold'), bg=co1, fg=co5 )
+b_10 = Button(frame, command= lambda: jogada(movimento_bot()),text='BOT', width=7,height=0, relief='flat', padx=1, pady=1, anchor='center', font=('Ivy 15 bold'), bg=co1, fg=co5 )
 b_10.place(x=160, y=215)
 
 
