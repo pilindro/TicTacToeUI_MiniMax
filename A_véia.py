@@ -465,18 +465,12 @@ b_10 = Button(frame, command= lambda: jogada(movimento_bot()),text='BOT', width=
 b_10.place(x=160, y=215)
 
 
-
-
-
 def print_tabu(bo):
     for i in range(len(bo)):
         
         print(bo[i], sep='-')
         if i % 2 ==0 and i !=0:
             print('-----------')
-
-
-
 
 
 janela.mainloop()
