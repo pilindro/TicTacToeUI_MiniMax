@@ -90,7 +90,7 @@ def jogada(i):
                 b_0['text'] = 'O'
                 tabuleiro[0][0] = jogador_atual
                 jogador_atual = 'X'
-                print(tabuleiro)
+                
     if i == str(2):
 
         if b_1['text'] == '':
@@ -105,7 +105,7 @@ def jogada(i):
                 b_1['text'] = 'O'   
                 tabuleiro[0][1] = jogador_atual
                 jogador_atual = 'X'  
-                print(tabuleiro)  
+                 
            
     if i == str(3):
 
@@ -121,7 +121,7 @@ def jogada(i):
                 b_2['text'] = 'O' 
                 tabuleiro[0][2] = jogador_atual     
                 jogador_atual = 'X'
-                print(tabuleiro) 
+                
             
     if i == str(4):
 
@@ -378,6 +378,7 @@ def minimax(tabuleiro_atual, ismax):
                 if valor == '':
                     tabuleiro_minimax[i][j] = jogador_1
                     score = minimax(tabuleiro_atual, False)
+                    #print_tabu(tabuleiro_atual)            // Retire o comentario se quiser ver o minimax rodando no terminal
                     tabuleiro_minimax[i][j] = ''
                     if score > best_score:
                         best_score = score
@@ -467,34 +468,12 @@ b_10.place(x=160, y=215)
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+def print_tabu(bo):
+    for i in range(len(bo)):
+        
+        print(bo[i], sep='-')
+        if i % 2 ==0 and i !=0:
+            print('-----------')
 
 
 
