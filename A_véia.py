@@ -358,10 +358,11 @@ def movimento_bot():
         jogada = '9'
         return jogada
 
-# Função recursiva, if ismax vai testar uma posição disponivel 
-# e passar a vez pro jogador dois que seria o ismax=False, que por sua vez testa a posição 
-# e chama o minimax novamente com a ismax
-# até sair um ganhador ou empate
+
+"""Função recursiva, if ismax vai testar uma posição disponivel 
+ e passar a vez pro jogador dois que seria o ismax=False, que por sua vez testa a posição 
+ e chama o minimax novamente com a ismax
+ até sair um ganhador ou empate"""
 def minimax(tabuleiro_atual, ismax):
     if marcar_vencedor_partidas_simuladas(jogador_1):
         return 1
