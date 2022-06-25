@@ -42,30 +42,28 @@ frame.grid(column=0, row=1, sticky=S)
 
 
 # linhas verticais ---------------------------------
-app_ = Label(frame, text='', height=27, relief='flat', pady=5, anchor='center', font=('Ivy 5 bold'), bg=co0, fg=co7 )
+
+app_ = Label(frame, text=' ', height=27, relief='flat', pady=5, anchor='center', font=('Ivy 5 bold'), bg=co0, fg=co7 )
 app_.place(x=90, y=15)
 
-app_ = Label(frame, text='', height=27, relief='flat', pady=4, anchor='center', font=('Ivy 5 bold'), bg=co0, fg=co7 )
+app_ = Label(frame, text=' ', height=27, relief='flat', pady=4, anchor='center', font=('Ivy 5 bold'), bg=co0, fg=co7 )
 app_.place(x=160, y=15)
 
 # linhas horizontais -------------------------------
-app_ = Label(frame, text='', width=190, relief='flat', padx=2,pady=1, anchor='center', font=('Ivy 1 bold'), bg=co0, fg=co7 )
+
+app_ = Label(frame, text=' ', width=190, relief='flat', padx=2,pady=1, anchor='center', font=('Ivy 1 bold'), bg=co0, fg=co7 )
 app_.place(x=25, y=80)
 
-app_ = Label(frame, text='', width=190, relief='flat', padx=2, pady=1, anchor='center', font=('Ivy 1 bold'), bg=co0, fg=co7 )
+app_ = Label(frame, text=' ', width=190, relief='flat', padx=2, pady=1, anchor='center', font=('Ivy 1 bold'), bg=co0, fg=co7 )
 app_.place(x=25, y=150)
 
-# parametros para as regras
+# parametros para as regras ---------------------
 jogador_1 = 'X'
 jogador_2 = 'O'
 jogador_atual = 'X'
 
-
 # tabuleiro que a interface manipula -------------------------
-tabuleiro = [[1,2,3],[4,5,6],[7,8,9]]
-
-# tabuleiro que o algoritmo MiniMax manipula pra testar as jogadas 
-tabuleiro_minimax = [['','',''],['','',''],['','','']]
+tabuleiro = [[' ',' ',' '],[' ',' ',' '],[' ',' ',' ']]
 
 # função que controla os botões
 def jogada(i):
@@ -78,7 +76,7 @@ def jogada(i):
     
     if i == str(1):
         
-        if b_0['text'] == '':
+        if b_0['text'] == ' ':
             if jogador_atual == 'X':
                 b_0['fg'] = cor
                 b_0['text'] = 'X'
@@ -93,7 +91,7 @@ def jogada(i):
                 
     if i == str(2):
 
-        if b_1['text'] == '':
+        if b_1['text'] == ' ':
             if jogador_atual == 'X':
                 b_1['fg'] = cor
                 b_1['text'] = 'X'
@@ -109,7 +107,7 @@ def jogada(i):
            
     if i == str(3):
 
-        if b_2['text'] == '':
+        if b_2['text'] == ' ':
             if jogador_atual == 'X':
                 b_2['fg'] = cor
                 b_2['text'] = 'X'
@@ -125,7 +123,7 @@ def jogada(i):
             
     if i == str(4):
 
-        if b_3['text'] == '':
+        if b_3['text'] == ' ':
             if jogador_atual == 'X':
                 b_3['fg'] = cor
                 b_3['text'] = 'X'
@@ -139,7 +137,7 @@ def jogada(i):
 
     if i == str(5):
 
-        if b_4['text'] == '':
+        if b_4['text'] == ' ':
             if jogador_atual == 'X':
                 b_4['fg'] = cor
                 b_4['text'] = 'X'
@@ -153,7 +151,7 @@ def jogada(i):
 
     if i == str(6):
 
-        if b_5['text'] == '':
+        if b_5['text'] == ' ':
             if jogador_atual == 'X':
                 b_5['fg'] = cor
                 b_5['text'] = 'X'
@@ -167,7 +165,7 @@ def jogada(i):
 
     if i == str(7):
 
-        if b_6['text'] == '':
+        if b_6['text'] == ' ':
             if jogador_atual == 'X':
                 b_6['fg'] = cor
                 b_6['text'] = 'X'
@@ -181,7 +179,7 @@ def jogada(i):
 
     if i == str(8):
 
-        if b_7['text'] == '':
+        if b_7['text'] == ' ':
             if jogador_atual == 'X':
                 b_7['fg'] = cor
                 b_7['text'] = 'X'
@@ -195,7 +193,7 @@ def jogada(i):
 
     if i == str(9):
 
-        if b_8['text'] == '':
+        if b_8['text'] == ' ':
             if jogador_atual == 'X':
                 b_8['fg'] = cor
                 b_8['text'] = 'X'
@@ -208,47 +206,47 @@ def jogada(i):
                 jogador_atual = 'X'
     
     # acabar jogo na horizontal
-    if tabuleiro[0][0] == tabuleiro[0][1] == tabuleiro[0][2] != '':
+    if tabuleiro[0][0] == tabuleiro[0][1] == tabuleiro[0][2] != ' ':
         if tabuleiro[0][0] == 'X':
             vencedor(jogador_1)
         if tabuleiro[0][0] == 'O':
             vencedor(jogador_2)
             
-    if tabuleiro[1][0] == tabuleiro[1][1] == tabuleiro[1][2] != '':
+    if tabuleiro[1][0] == tabuleiro[1][1] == tabuleiro[1][2] != ' ':
         if tabuleiro[1][0] == 'X':
             vencedor(jogador_1)
         if tabuleiro[1][0] == 'O':
             vencedor(jogador_2)
-    if tabuleiro[2][0] == tabuleiro[2][1] == tabuleiro[2][2] != '':
+    if tabuleiro[2][0] == tabuleiro[2][1] == tabuleiro[2][2] != ' ':
         if tabuleiro[2][0] == 'X':
             vencedor(jogador_1)
         if tabuleiro[2][0] == 'O':
             vencedor(jogador_2)
 
     #acabar jogo na vertical
-    if tabuleiro[0][0] == tabuleiro[1][0] == tabuleiro[2][0] != '':
+    if tabuleiro[0][0] == tabuleiro[1][0] == tabuleiro[2][0] != ' ':
         if tabuleiro[0][0] == 'X':
             vencedor(jogador_1)
         if tabuleiro[0][0] == 'O':
             vencedor(jogador_2)
-    if tabuleiro[0][1] == tabuleiro[1][1] == tabuleiro[2][1] != '':
+    if tabuleiro[0][1] == tabuleiro[1][1] == tabuleiro[2][1] != ' ':
         if tabuleiro[0][1] == 'X':
             vencedor(jogador_1)
         if tabuleiro[0][1] == 'O':
             vencedor(jogador_2)
-    if tabuleiro[0][2] == tabuleiro[1][2] == tabuleiro[2][2] != '':
+    if tabuleiro[0][2] == tabuleiro[1][2] == tabuleiro[2][2] != ' ':
         if tabuleiro[0][2] == 'X':
             vencedor(jogador_1)
         if tabuleiro[0][2] == 'O':
             vencedor(jogador_2)
 
     #acabar o jogo na diagonal
-    if tabuleiro[0][0] == tabuleiro[1][1] == tabuleiro[2][2] != '':
+    if tabuleiro[0][0] == tabuleiro[1][1] == tabuleiro[2][2] != ' ':
         if tabuleiro[0][0] == 'X':
             vencedor(jogador_1)
         if tabuleiro[0][0] == 'O':
             vencedor(jogador_2)
-    if tabuleiro[0][2] == tabuleiro[1][1] == tabuleiro[2][0] != '':
+    if tabuleiro[0][2] == tabuleiro[1][1] == tabuleiro[2][0] != ' ':
         if tabuleiro[0][2] == 'X':
             vencedor(jogador_1)
         if tabuleiro[0][2] == 'O':
@@ -258,7 +256,7 @@ def jogada(i):
 def vencedor(v):
     
     if v == jogador_1:
-        marca_vencedor = 'X'
+        
         label_X['fg'] = co7
         b_0['state'] = 'disable'
         b_1['state'] = 'disable'
@@ -288,19 +286,18 @@ def restart():
     global tabuleiro_minimax
     global jogador_atual
     jogador_atual = 'X'
-    tabuleiro = [[1,2,3],[4,5,6],[7,8,9]]
-    tabuleiro_minimax = [['','',''],['','',''],['','','']]
+    tabuleiro = [[' ',' ',' '],[' ',' ',' '],[' ',' ',' ']]
     label_O['fg'] = co8
     label_X['fg'] = co8
-    b_0['text'] = ''
-    b_1['text'] = ''
-    b_2['text'] = ''
-    b_3['text'] = ''
-    b_4['text'] = ''
-    b_5['text'] = ''
-    b_6['text'] = ''
-    b_7['text'] = ''
-    b_8['text'] = ''
+    b_0['text'] = ' '
+    b_1['text'] = ' '
+    b_2['text'] = ' '
+    b_3['text'] = ' '
+    b_4['text'] = ' '
+    b_5['text'] = ' '
+    b_6['text'] = ' '
+    b_7['text'] = ' '
+    b_8['text'] = ' '
     b_0['state'] = 'normal'
     b_1['state'] = 'normal'
     b_2['state'] = 'normal'
@@ -314,19 +311,14 @@ def restart():
 # chama o minimax e devolve a melhor jogada
 def movimento_bot():
     
-    for i,linha in enumerate(tabuleiro):
-        for j, valor in enumerate(linha):
-            if valor == 'X' or valor == 'O':
-
-                tabuleiro_minimax[i][j] = valor
     best_score = -80
     best_move = 0
-    for i, linha in enumerate(tabuleiro_minimax):
+    for i, linha in enumerate(tabuleiro):
         for j, valor in enumerate(linha):
-            if valor == '':
-                tabuleiro_minimax[i][j] = jogador_1
-                score = minimax(tabuleiro_minimax, False)
-                tabuleiro_minimax[i][j] = ''
+            if valor == ' ':
+                tabuleiro[i][j] = jogador_1
+                score = minimax(tabuleiro, False)
+                tabuleiro[i][j] = ' '
                 if score > best_score:
                     best_score = score
                     best_move = (i, j)
@@ -375,11 +367,11 @@ def minimax(tabuleiro_atual, ismax):
         best_score = -80
         for i, linha in enumerate(tabuleiro_atual):
             for j, valor in enumerate(linha):
-                if valor == '':
-                    tabuleiro_minimax[i][j] = jogador_1
+                if valor == ' ':
+                    tabuleiro[i][j] = jogador_1
                     score = minimax(tabuleiro_atual, False)
-                    #print_tabu(tabuleiro_atual)            // Retire o comentario se quiser ver o minimax rodando no terminal
-                    tabuleiro_minimax[i][j] = ''
+                    print_tabu(tabuleiro_atual)           # // Retire o comentario se quiser ver o minimax rodando no terminal
+                    tabuleiro[i][j] = ' '
                     if score > best_score:
                         best_score = score
         return best_score
@@ -388,19 +380,19 @@ def minimax(tabuleiro_atual, ismax):
         best_score = 80
         for i, linha in enumerate(tabuleiro_atual):
             for j, valor in enumerate(linha):
-                if valor == '':
-                    tabuleiro_minimax[i][j] = jogador_2
+                if valor == ' ':
+                    tabuleiro[i][j] = jogador_2
                     score = minimax(tabuleiro_atual, True)
-                    tabuleiro_minimax[i][j] = ''
+                    tabuleiro[i][j] = ' '
                     if score < best_score:
                         best_score = score
         return best_score
     
 # checar se foi empate
 def checar_empate():
-    for i,linha in enumerate(tabuleiro_minimax):
+    for i,linha in enumerate(tabuleiro):
         for j, valor in enumerate(linha):
-            if valor == '':
+            if valor == ' ':
                 return False
 
     return True
@@ -408,54 +400,54 @@ def checar_empate():
 # marca quem ganhou nas partidas simulados do minimax e é a condição de parada da função recursiva
 def marcar_vencedor_partidas_simuladas(mark):
         #horizontal
-        if tabuleiro_minimax[0][0] == tabuleiro_minimax[0][1] and tabuleiro_minimax[0][0] == tabuleiro_minimax[0][2] and tabuleiro_minimax[0][0] == mark:
+        if tabuleiro[0][0] == tabuleiro[0][1] and tabuleiro[0][0] == tabuleiro[0][2] and tabuleiro[0][0] == mark:
             return True
-        elif (tabuleiro_minimax[1][0] == tabuleiro_minimax[1][1] and tabuleiro_minimax[1][0] == tabuleiro_minimax[1][2] and tabuleiro_minimax[1][0] == mark):
+        elif (tabuleiro[1][0] == tabuleiro[1][1] and tabuleiro[1][0] == tabuleiro[1][2] and tabuleiro[1][0] == mark):
             return True
-        elif (tabuleiro_minimax[2][0] == tabuleiro_minimax[2][1] and tabuleiro_minimax[2][0] == tabuleiro_minimax[2][2] and tabuleiro_minimax[2][0] == mark):
+        elif (tabuleiro[2][0] == tabuleiro[2][1] and tabuleiro[2][0] == tabuleiro[2][2] and tabuleiro[2][0] == mark):
             return True
         #vertical
-        elif (tabuleiro_minimax[0][0] == tabuleiro_minimax[1][0] and tabuleiro_minimax[0][0] == tabuleiro_minimax[2][0] and tabuleiro_minimax[0][0] == mark):
+        elif (tabuleiro[0][0] == tabuleiro[1][0] and tabuleiro[0][0] == tabuleiro[2][0] and tabuleiro[0][0] == mark):
+            return True 
+        elif (tabuleiro[0][1] == tabuleiro[1][1] and tabuleiro[0][1] == tabuleiro[2][1] and tabuleiro[0][1] == mark):
             return True
-        elif (tabuleiro_minimax[0][1] == tabuleiro_minimax[1][1] and tabuleiro_minimax[0][1] == tabuleiro_minimax[2][1] and tabuleiro_minimax[0][1] == mark):
-            return True
-        elif (tabuleiro_minimax[0][2] == tabuleiro_minimax[1][2] and tabuleiro_minimax[0][2] == tabuleiro_minimax[2][2] and tabuleiro_minimax[0][2] == mark):
+        elif (tabuleiro[0][2] == tabuleiro[1][2] and tabuleiro[0][2] == tabuleiro[2][2] and tabuleiro[0][2] == mark):
             return True
         #diagonal
-        elif (tabuleiro_minimax[0][0] == tabuleiro_minimax[1][1] and tabuleiro_minimax[0][0] == tabuleiro_minimax[2][2] and tabuleiro_minimax[0][0] == mark):
+        elif (tabuleiro[0][0] == tabuleiro[1][1] and tabuleiro[0][0] == tabuleiro[2][2] and tabuleiro[0][0] == mark):
             return True
-        elif (tabuleiro_minimax[0][2] == tabuleiro_minimax[1][1] and tabuleiro_minimax[0][2] == tabuleiro_minimax[2][0] and tabuleiro_minimax[0][2] == mark):
+        elif (tabuleiro[0][2] == tabuleiro[1][1] and tabuleiro[0][2] == tabuleiro[2][0] and tabuleiro[0][2] == mark):
             return True
         else:
             return False
 
 
 # botões
-b_0 = Button(frame, command= lambda: jogada('1'), text='', width=2,height=1, relief='flat', padx=2, pady=1, anchor='center', font=('Ivy 20 bold'), bg=co1, fg=co7 )
+b_0 = Button(frame, command= lambda: jogada('1'), text=' ', width=2,height=1, relief='flat', padx=2, pady=1, anchor='center', font=('Ivy 20 bold'), bg=co1, fg=co7 )
 b_0.place(x=35, y=21)
 
-b_1 = Button(frame, command= lambda: jogada('2'),text='', width=2,height=1, relief='flat', padx=2, pady=1, anchor='center', font=('Ivy 20 bold'), bg=co1, fg=co7 )
+b_1 = Button(frame, command= lambda: jogada('2'),text=' ', width=2,height=1, relief='flat', padx=2, pady=1, anchor='center', font=('Ivy 20 bold'), bg=co1, fg=co7 )
 b_1.place(x=104, y=21)
 
-b_2 = Button(frame, command= lambda: jogada('3'),text='', width=2,height=1, relief='flat', padx=2, pady=1, anchor='center', font=('Ivy 20 bold'), bg=co1, fg=co7 )
+b_2 = Button(frame, command= lambda: jogada('3'),text=' ', width=2,height=1, relief='flat', padx=2, pady=1, anchor='center', font=('Ivy 20 bold'), bg=co1, fg=co7 )
 b_2.place(x=169, y=21)
 
-b_3 = Button(frame, command= lambda: jogada('4'),text='', width=2,height=1, relief='flat', padx=2, pady=1, anchor='center', font=('Ivy 20 bold'), bg=co1, fg=co7 )
+b_3 = Button(frame, command= lambda: jogada('4'),text=' ', width=2,height=1, relief='flat', padx=2, pady=1, anchor='center', font=('Ivy 20 bold'), bg=co1, fg=co7 )
 b_3.place(x=35, y=92)
 
-b_4 = Button(frame, command= lambda: jogada('5'),text='', width=2,height=1, relief='flat', padx=2, pady=1, anchor='center', font=('Ivy 20 bold'), bg=co1, fg=co7 )
+b_4 = Button(frame, command= lambda: jogada('5'),text=' ', width=2,height=1, relief='flat', padx=2, pady=1, anchor='center', font=('Ivy 20 bold'), bg=co1, fg=co7 )
 b_4.place(x=104, y=92)
 
-b_5 = Button(frame, command= lambda: jogada('6'),text='', width=2,height=1, relief='flat', padx=2, pady=1, anchor='center', font=('Ivy 20 bold'), bg=co1, fg=co7 )
+b_5 = Button(frame, command= lambda: jogada('6'),text=' ', width=2,height=1, relief='flat', padx=2, pady=1, anchor='center', font=('Ivy 20 bold'), bg=co1, fg=co7 )
 b_5.place(x=169, y=92)
 
-b_6 = Button(frame, command= lambda: jogada('7'),text='', width=2,height=1, relief='flat', padx=2, pady=1, anchor='center', font=('Ivy 20 bold'), bg=co1, fg=co7 )
+b_6 = Button(frame, command= lambda: jogada('7'),text=' ', width=2,height=1, relief='flat', padx=2, pady=1, anchor='center', font=('Ivy 20 bold'), bg=co1, fg=co7 )
 b_6.place(x=35, y=162)
 
-b_7 = Button(frame, command= lambda: jogada('8'),text='', width=2,height=1, relief='flat', padx=2, pady=1, anchor='center', font=('Ivy 20 bold'), bg=co1, fg=co7 )
+b_7 = Button(frame, command= lambda: jogada('8'),text=' ', width=2,height=1, relief='flat', padx=2, pady=1, anchor='center', font=('Ivy 20 bold'), bg=co1, fg=co7 )
 b_7.place(x=104, y=162)
 
-b_8 = Button(frame, command= lambda: jogada('9'),text='', width=2,height=1, relief='flat', padx=2, pady=1, anchor='center', font=('Ivy 20 bold'), bg=co1, fg=co7 )
+b_8 = Button(frame, command= lambda: jogada('9'),text=' ', width=2,height=1, relief='flat', padx=2, pady=1, anchor='center', font=('Ivy 20 bold'), bg=co1, fg=co7 )
 b_8.place(x=169, y=162)
 
 b_9 = Button(frame, command= lambda: restart(),text='RESTART', width=7,height=0, relief='flat', padx=2, pady=1, anchor='center', font=('Ivy 15 bold'), bg=co1, fg=co5 )
